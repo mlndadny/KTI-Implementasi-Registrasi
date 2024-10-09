@@ -1,0 +1,42 @@
+﻿@model SampleSecureCoding.ViewModel.RegistrationViewModel;
+<div Class = "row">
+    <div Class="col-lg-4">
+        <div Class="card mb-4">
+            <div Class="card-header">
+                Registration
+            </div>
+            <div Class="card-body">
+                @if (ViewBag.Message !=null)
+                {
+                    <div class="alert alert-succes">
+                        @@ViewBag.Message
+                    </div>
+                }
+                <form asp-action="Registration">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <input asp-for="Username" class="form-control form-control-user playsholder">
+                        <span asp-validation-for="Username"class="text-danger">
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="Password" class="form-control form-control-user"playsholder="">
+                        <span asp-validation-for="Password" class="text-danger">
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="ConfirmPassword" class="form-control form-control-user" placeholder="Confirm Password" / >
+                        <span asp-validation-for="ConfirmPassword" class="text-danger">
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
